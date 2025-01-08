@@ -15,7 +15,7 @@ const useStorage = () => {
   //Salvar um item no storage
   const saveItem = async (key, value) => {
     try {
-      let passwords = getItem(key);
+      let passwords = await getItem(key);
 
       passwords.push(value);
       await AsyncStorage.setItem(key, JSON.stringify(passwords));
@@ -27,7 +27,7 @@ const useStorage = () => {
   //Remove algo do storage
   const removeItem = async (key, item) => {
     try {
-      let passwords = getItem(key);
+      let passwords = await getItem(key);
       let myPasswords = passwords.filter((password) => {
         return password !== item;
       });
